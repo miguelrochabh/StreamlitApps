@@ -5,8 +5,8 @@ import streamlit as st
 st.title("Página Streamlit Alterada")
 
 #Header/Subheader
-st.header("Isso é um header")
-st.subheader("Isso é um subheader")
+st.header("Isso e um header")
+st.subheader("Isso e um subheader")
 
 #Texto
 st.text("Oi Steamlit")
@@ -19,9 +19,9 @@ st.success("Sucesso!")
 
 st.info("Informação!")
 
-st.warning("Isso é um aviso!")
+st.warning("Isso e um aviso!")
 
-st.error("Isso é um erro!")
+st.error("Isso e um erro!")
 
 st.exception("NameError('nome não definido')")
 
@@ -53,7 +53,7 @@ if st.checkbox("Mostrando/Escondendo"):
     st.text("Mostrando ou Escondendo Widget")
     
 #Radio Buttons
-status = st.radio("Você apertou em algum botão?", ("Sim", "Não"))
+status = st.radio("Voce apertou em algum botao?", ("Sim", "Nao"))
 
 if status == 'Sim':
     st.success("De fato!")
@@ -73,7 +73,7 @@ st.write("Você escolheu", len(location), "lugares")
 age = st.slider("Qual a sua idade?", 1,100)
 
 #Botões
-st.button("Botão Simples")
+st.button("Botao Simples")
 if st.button("Sobre"):
     st.text("Sim, sobre")
     
@@ -91,14 +91,53 @@ if st.button("Mandar"):
     
 #Date input
 import datetime
-today = st.date_input("Hoje é", datetime.datetime.now())
+today = st.date_input("Hoje e", datetime.datetime.now())
 
 #Time
-hora = st.time_input("Agora são", datetime.time())
+hora = st.time_input("Agora sao", datetime.time())
 
 #Displaying JSON
 st.text("Display JSON")
-st.json({'name':"Miguel", 'gênero':"Masculino",})
+st.json({'name':"Miguel", 'genero':"Masculino",})
 
 #Display RAW Code
 st.text("Display RAW Code")
+st.code("import numpy as np")
+
+#Display RAW Code
+with st.echo():
+    #Isso tambem mostra como comentario
+    import pandas as pd
+    df = pd.DataFrame()
+    
+#Barra de progresso
+import time
+my_bar = st.progress(0)
+for p in range(10):
+    my_bar.progress(p + 1)
+    
+#Spinner
+with st.spinner("Esperando..."):
+    time.sleep(5)
+st.success("Finalizado!")
+
+#Sidebard
+st.sidebar.header("Sobre")
+st.sidebar.text("Texto na sidebar")
+
+#Functions
+@st.cache
+def run_fxn():
+    return range(100)
+st.write(run_fxn())
+
+#Dataframe
+st.dataframe(df)
+
+#Tables
+import numpy as np
+df = pd.DataFrame(
+    np.random.randn(4, 6),
+    columns=('col %d' % i for i in range(6))
+    )
+st.table(df.style.set_precision(2))
