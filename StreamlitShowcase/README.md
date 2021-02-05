@@ -1,2 +1,2 @@
 # Streamlit Primeira Aplicação
-Primeira aplicação usando a biblioteca python streamlit
+Primeira aplicação Steamlit que fiz usando a biblioteca para python.
